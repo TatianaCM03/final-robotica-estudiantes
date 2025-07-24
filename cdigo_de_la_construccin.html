@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>🔣Código de la Construcción | 🏠Inicio </title>
+<meta name="author" content="Paola Caraguay, Tatiana Cumbicos, Selena Yaguachi, Daniela Armijos." />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.8.1 - exelearning.net" />
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript" src="SCORM_API_wrapper.js"></script>
+<script type="text/javascript" src="SCOFunctions.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+<body id="exe-node-47" class="exe-scorm" onunload="unloadPage()"><script type="text/javascript">document.body.className+=" js";jQuery(function(){loadPage()})</script>
+<div id="outer">
+<section id="main">
+<header id="nodeDecoration"><div id="headerContent"><h1 id="nodeTitle">🔣Código de la Construcción</h1></div></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id219">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">PASOS A SEGUIR</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta219_128_2" class="block iDevice_content">
+<div class="exe-text"><p><strong>ACTIVIDAD EN TINKERCAD "LLUVIA DE MATRICES"</strong></p>
+<p><img src="img0.5.png" width="373" height="373" alt="TINKERD" style="display: block; margin-left: auto; margin-right: auto;" /></p>
+<p></p>
+<p style="text-align: justify;"><strong>Objetivo:</strong> Aplicar la lógica de programación, el uso de arreglos (arrays) y el control de coordenadas tridimensionales (x, y, z) para crear animaciones en un cubo LED 4x4x4 utilizando Arduino.</p>
+<p style="text-align: center;"><strong>PASO 1: Iniciar sesión en Tinkercad</strong></p>
+<ul>
+<li>Ve a 👉 <a href="https://www.tinkercad.com">https://www.tinkercad.com</a></li>
+<li style="text-align: center;"><strong>Inicia</strong> sesión con tu cuenta (Google, correo, etc.)<br /><strong>PASO 2: Crear nuevo circuito</strong></li>
+<li>En el menú superior, haz clic en “Diseños” → “Crear nuevo diseño”</li>
+<li>Selecciona “Circuito”</li>
+</ul>
+<p style="text-align: center;"><br /><strong>PASO 3: Agrega componentes</strong></p>
+<ul>
+<li>Desde la barra derecha, arrastra los siguientes componentes al área de trabajo: <br /> <img src="MAAAA.png" alt="" width="295" height="395" style="display: block; margin-left: auto; margin-right: auto;" /></li>
+</ul>
+<p></p>
+<p style="text-align: center;"><strong>PASO 4: Conectar LEDS a Arduino</strong></p>
+<ul>
+<li>Conecta los LEDS y resistencias así:</li>
+</ul>
+<p><img src="CONEC.png" alt="" width="428" height="99" style="display: block; margin-left: auto; margin-right: auto;" /></p>
+<p>Tip: Los LEDS tienen polaridad. La pata larga va al pin digital (positivo), la corta al negativo (resistencia a GND).</p>
+<p style="text-align: center;"><strong>PASO 5: Agrega el código en Arduino</strong></p>
+<p></p>
+<ul>
+<li>Haz clic en la pestaña “Código” (arriba a la derecha)</li>
+<li>cambia de “Bloques” a “Texto”<br />Borra todo lo que hay y pega este código:</li>
+</ul>
+<p style="text-align: center;"><strong>Código:</strong></p>
+<p>int Columnas[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};<br />int Filas[] = {16, 17, 18, 19};</p>
+<p><br />// Configuración inicial<br />void setup() {<br />  for (int i = 0; i &lt; 16; i++) {<br />    pinMode(Columnas[i], OUTPUT);<br />    digitalWrite(Columnas[i], LOW);<br />  }<br />  for (int i = 0; i &lt; 4; i++) {<br />    pinMode(Filas[i], OUTPUT);<br />    digitalWrite(Filas[i], LOW);<br />  }<br />}</p>
+<p><br />// Encender LED en coordenadas (x, y, z)<br />void encenderLED(int x, int y, int z, int tiempo) {<br />  int col = y * 4 + x; // Conversión (x, y) a índice de columna<br />  digitalWrite(Columnas[col], HIGH);<br />  digitalWrite(Filas[z], HIGH);<br />  delay(tiempo);<br />  digitalWrite(Columnas[col], LOW);<br />  digitalWrite(Filas[z], LOW);<br />}</p>
+<p><br />// Apagar todo<br />void apagarTodo() {<br />  for (int i = 0; i &lt; 16; i++) digitalWrite(Columnas[i], LOW);<br />  for (int i = 0; i &lt; 4; i++) digitalWrite(Filas[i], LOW);<br />}</p>
+<p></p>
+<p></p>
+<p><br />// Figura: cubo que crece<br />void cuboLatente() {<br />  for (int r = 0; r &lt; 2; r++) {<br />    for (int i = 0; i &lt; 40; i++) {<br />      encenderLED(1, 1, 1, 2);<br />    }</p>
+<p><br />    for (int i = 0; i &lt; 40; i++) {<br />      encenderLED(1, 1, 1, 1);<br />      encenderLED(2, 1, 1, 1);<br />      encenderLED(1, 2, 1, 1);<br />      encenderLED(1, 1, 2, 1);<br />      encenderLED(2, 2, 1, 1);<br />      encenderLED(2, 1, 2, 1);<br />      encenderLED(1, 2, 2, 1);<br />      encenderLED(2, 2, 2, 1);<br />    }<br />  }<br />}</p>
+<p><br />// Figura: lluvia descendente<br />void lluviaVertical() {<br />  for (int ciclo = 0; ciclo &lt; 40; ciclo++) {<br />    int x = random(0, 4);<br />    int y = random(0, 4);</p>
+<p><br />    for (int z = 3; z &gt;= 0; z--) {<br />      encenderLED(x, y, z, 40);<br />    }<br />    delay(50);<br />  }<br />}</p>
+<p><br />// Figura: cubo parpadeante<br />void parpadeoCubo() {<br />  for (int r = 0; r &lt; 2; r++) {<br />    for (int z = 0; z &lt; 4; z++) {<br />      for (int y = 0; y &lt; 4; y++) {<br />        for (int x = 0; x &lt; 4; x++) {<br />          encenderLED(x, y, z, 1);<br />        }<br />      }<br />    }<br />    delay(200);<br />    apagarTodo();<br />    delay(200);<br />  }<br />}</p>
+<p></p>
+<p><br />// LOOP PRINCIPAL<br />void loop() {<br />  <br />  parpadeoCubo();<br /> <br />  <br />  lluviaVertical();  // Lluvia agregada como animación final<br />}</p>
+<p></p>
+<p><strong>Infórmate: </strong></p>
+<ul>
+<li><strong>int Columnas[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}: </strong>Crea un arreglo con los 16 pines que representan las columnas de un cubo LED 4x4x4 (4 columnas × 4 filas = 16 LEDS por nivel).</li>
+<li><strong>void setup:</strong> Esta es la función de configuración. Se ejecuta una sola vez al iniciar el programa en el Arduino.</li>
+<li><strong>void encenderLED: </strong>Esta función enciende un solo LED en una posición (x, y, z) durante un tiempo específico.</li>
+<li><strong>int col: </strong>Convierte las coordenadas 2D (x, y) en una posición del arreglo de columnas (porque es 1D).</li>
+<li><strong>pinMode(OUTPUT):</strong>  indica que cada uno de esos pines será usado como salida, es decir, enviarán energía para encender los LEDS.</li>
+<li><strong>void loop: </strong>se ejecuta en ciclo infinito, es decir, una y otra vez. Todo lo que pongas aquí se repite mientras esté corriendo la simulación.</li>
+<li><strong>for- high:</strong>Enciende el LED en esa posición, espera el tiempo dado, y lo apaga.</li>
+<li><strong>for-low:</strong> Apaga todas las columnas y filas del cubo.</li>
+<li><strong>loop: </strong>Esta función se repite constantemente: Ejecuta el parpadeo total del cubo, luego muestra la lluvia descendente.</li>
+<li><strong>void apagarTodo:</strong> Apaga todas las columnas y filas del cubo.</li>
+<li><strong>void cuboLatente: </strong>Esta animación muestra un cubo que va creciendo (efecto de encender más LEDs con el tiempo).</li>
+<li><strong>for:</strong> repite la animación un sinnúmero se veces.</li>
+<li><strong>void lluviaVertical: </strong>40 ciclos de "gotas de lluvia". Cada gota cae desde arriba hasta abajo.</li>
+<li><strong>delay: </strong>Pausa 200ms, apaga el cubo, espera 200ms más. Da un efecto de parpadeo total.</li>
+</ul>
+<p></p></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</section>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Reconocimiento Compartir igual 4.0</a></p>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_style_js.js"></script></body></html>
